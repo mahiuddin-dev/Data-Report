@@ -1,0 +1,36 @@
+{% load static %}
+
+<div id="sub-category-select">
+    <select id="id_sub_category" name="sub_category">
+        
+        {% for option in widget.choices %}
+        
+            
+        <option value="{{ option.value }}" 
+        {% if option.value == widget.value %}
+            selected="selected"
+        {% endif %}
+             >
+            {{ option.label }}
+            </option>
+                
+        {% endfor %}
+    </select>
+</div>
+
+<script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function(){
+        let sub_category_field = document.getElementById("sub-category-select")
+        let category_field = document.getElementById("id-category")
+        sub_category_field.style.display = "none"
+        category_field.onchange = function(){
+            if(category_field.value){
+                sub_category_field.style.display = "block"
+            }else{
+                sub_category_field.style.display = "none"
+            }
+        }
+    })
+
+
+</script>
